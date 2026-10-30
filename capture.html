@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Captura de Página Inteira</title>
+  <link rel="icon" href="icons/icon16.png">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="capture.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="capture.html">
+      <img src="icons/icon48.png" alt="" width="26" height="26">
+      <span>Captura de Página Inteira</span>
+    </a>
+    <div class="actions" id="actions" hidden>
+      <button id="dl-png" class="primary">Baixar PNG</button>
+      <button id="dl-jpg">Baixar JPG</button>
+      <button id="dl-pdf">Baixar PDF</button>
+      <button id="copy">Copiar</button>
+      <button id="edit">Editar</button>
+      <button id="delete" class="danger">Excluir</button>
+    </div>
+    <a class="btn" href="options.html">Opções</a>
+  </header>
+
+  <div class="layout">
+    <main>
+      <section id="viewer" hidden>
+        <div class="info">
+          <h1 id="title"></h1>
+          <a id="url" target="_blank" rel="noreferrer"></a>
+          <p id="meta"></p>
+          <p id="notice" class="notice" hidden></p>
+        </div>
+        <div id="images"></div>
+      </section>
+      <section id="empty" class="empty" hidden>
+        <h1>Nenhuma captura ainda</h1>
+        <p>Abra qualquer página e clique no ícone da extensão (ou use <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>).</p>
+      </section>
+    </main>
+
+    <aside>
+      <h2>Minhas capturas</h2>
+      <ul id="list"></ul>
+    </aside>
+  </div>
+
+  <div id="toast" role="status"></div>
+
+  <script src="lib/jspdf.umd.min.js"></script>
+  <script type="module" src="capture.js"></script>
+</body>
+</html>

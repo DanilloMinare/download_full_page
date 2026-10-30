@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editor — Captura de Página Inteira</title>
+  <link rel="icon" href="icons/icon16.png">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="back" title="Voltar para a captura">← Voltar</button>
+
+    <div class="group tools" role="toolbar" aria-label="Ferramentas">
+      <button data-tool="select" title="Selecionar e mover (V)">
+        <svg viewBox="0 0 24 24"><path d="M5 3l14 8-6.5 1.8L9.5 19z"/></svg>
+      </button>
+      <button data-tool="crop" title="Recortar (C)">
+        <svg viewBox="0 0 24 24"><path d="M6 2v16h16M2 6h16v16"/></svg>
+      </button>
+      <button data-tool="arrow" title="Seta (A)">
+        <svg viewBox="0 0 24 24"><path d="M5 19L19 5M10 5h9v9"/></svg>
+      </button>
+      <button data-tool="line" title="Linha (L)">
+        <svg viewBox="0 0 24 24"><path d="M5 19L19 5"/></svg>
+      </button>
+      <button data-tool="rect" title="Retângulo (R)">
+        <svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="1"/></svg>
+      </button>
+      <button data-tool="ellipse" title="Elipse (E)">
+        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="6.5"/></svg>
+      </button>
+      <button data-tool="pen" title="Caneta (P)">
+        <svg viewBox="0 0 24 24"><path d="M3 17c3-7 5 1 8-4s5-6 10-8"/></svg>
+      </button>
+      <button data-tool="text" title="Texto (T)">
+        <svg viewBox="0 0 24 24"><path d="M5 7V4h14v3M12 4v16M9 20h6"/></svg>
+      </button>
+      <button data-tool="highlight" title="Marca-texto (H)">
+        <svg viewBox="0 0 24 24"><path d="M3 21h8M14 4l6 6-8 8H8v-4z"/></svg>
+      </button>
+      <button data-tool="pixelate" title="Pixelar / ocultar dados (B)">
+        <svg viewBox="0 0 24 24" class="filled"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/><rect x="13" y="4" width="7" height="7" opacity=".45"/><rect x="4" y="13" width="7" height="7" opacity=".45"/></svg>
+      </button>
+    </div>
+
+    <div class="group props">
+      <div class="swatches" id="swatches"></div>
+      <input type="color" id="color" title="Cor">
+      <label title="Espessura">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        <select id="width"></select>
+      </label>
+      <label title="Tamanho do texto">
+        <svg viewBox="0 0 24 24"><path d="M4 18l5-12 5 12M6 14h6M16 18v-6h4"/></svg>
+        <select id="fontSize"></select>
+      </label>
+    </div>
+
+    <div class="group">
+      <button id="undo" title="Desfazer (Ctrl+Z)">↶</button>
+      <button id="redo" title="Refazer (Ctrl+Shift+Z)">↷</button>
+      <button id="remove" title="Apagar selecionado (Delete)" class="danger">Apagar</button>
+    </div>
+
+    <div class="group">
+      <button id="zoomOut" title="Diminuir zoom (Ctrl −)">−</button>
+      <button id="zoomFit" title="Ajustar à largura (Ctrl 0)"><span id="zoomLabel">100%</span></button>
+      <button id="zoomIn" title="Aumentar zoom (Ctrl +)">+</button>
+    </div>
+
+    <select id="part" title="Parte da captura" hidden></select>
+
+    <div class="group end">
+      <button id="download">Baixar</button>
+      <button id="save" class="primary" title="Salvar (Ctrl+S)">Salvar</button>
+    </div>
+  </header>
+
+  <div id="cropBar" class="cropbar" hidden>
+    <span>Arraste sobre a imagem para escolher a área do recorte.</span>
+    <button id="cropApply" class="primary" disabled>Aplicar recorte</button>
+    <button id="cropCancel">Cancelar</button>
+  </div>
+
+  <div id="stage">
+    <canvas id="view"></canvas>
+    <div id="scroller"><div id="spacer"></div></div>
+    <textarea id="textInput" spellcheck="false" hidden></textarea>
+    <p id="loading">Carregando…</p>
+  </div>
+
+  <div id="toast" role="status"></div>
+
+  <script type="module" src="editor.js"></script>
+</body>
+</html>

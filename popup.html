@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Captura de Página Inteira</title>
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <div class="head">
+      <img src="icons/icon48.png" alt="" width="28" height="28">
+      <strong>Captura de Página Inteira</strong>
+    </div>
+
+    <p id="status">Preparando…</p>
+    <div class="progress" id="progress"><div id="bar"></div></div>
+    <p class="hint" id="hint">Não clique fora desta janela até terminar.</p>
+
+    <div class="actions">
+      <button id="cancel">Cancelar</button>
+      <button id="retry" class="primary" hidden>Tentar de novo</button>
+    </div>
+
+    <nav>
+      <a href="capture.html" target="_blank">Minhas capturas</a>
+      <a href="options.html" target="_blank">Opções</a>
+    </nav>
+  </main>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
